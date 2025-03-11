@@ -12,7 +12,7 @@ import image5 from "../../../images/image5.jpg";
 import image6 from "../../../images/image6.jpg";
 import image7 from "../../../images/image7.png";
 import image8 from "../../../images/image8.png";
-import profile2 from "../../../images/profile2.jpg";
+import profile2 from "../../../images/profile4.jpg";
 import image9 from "../../../images/image9.jpg";
 import image10 from "../../../images/image10.jpg";
 
@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   {article.author.name}
                 </span>
                 <time>
-                  {formatDistanceToNow(article.date, { addSuffix: true })} {/* Use date-fns for dynamic time */}
+                  2 hours ago
                 </time>
               </div>
             </div>
