@@ -1,101 +1,134 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+import { ArticleCard } from "@/components/article-card"
+import { Button } from "@/components/ui/button"
+import type { StaticImageData } from "next/image"
+import image3 from "../images/image3.jpg"
+import image1 from "../images/image1.jpg"
+import image2 from "../images/image2.jpg"
+import image4 from "../images/image4.jpg"
+import image6 from "../images/image6.jpg"
+import image7 from "../images/image1.jpg"
+
+// Define types for articles
+interface Article {
+  title: string
+  description: string
+  category: string
+  image: string | StaticImageData
+  slug: string
+  date: Date
+}
+
+// Featured article - Reply Gang article
+const featuredArticle: Article = {
+  title: "Reply Gang Faces Massive Losses Due to Global X Outage, Mr. Kutkutjiya and Mr. Bholu Share Their Stories",
+  description:
+    "Yesterday, the world witnessed a disaster unlike any other – an unprecedented global X outage. It wasn't just any outrage, this was a financial crisis for the reply guys of the internet.",
+  category: "Social Media",
+  image: image3,
+  slug: "reply-gang-x-outage",
+  date: new Date(2024, 2, 15),
+}
+
+// Recent articles including new satirical ones
+const recentArticles: Article[] = [
+  {
+    title: "Influencer in Crisis: 'My Phone Died During a Viral Moment'",
+    description:
+      "Local content creator shares harrowing tale of how a dead battery cost them thousands of potential followers.",
+    category: "Social Media",
+    image: image7,
+    slug: "influencer-phone-crisis",
+    date: new Date(2024, 2, 14),
+  },
+  {
+    title: "Man Spends 72 Hours Crafting 'Perfect' Comment, Gets Zero Likes",
+    description: "A heartbreaking story of internet validation and the pursuit of the perfect witty response.",
+    category: "Social Media",
+    image: image6,
+    slug: "perfect-comment-zero-likes",
+    date: new Date(2024, 2, 13),
+  },
+  {
+    title: "Study Shows 97% of Internet Arguments Could Be Avoided By Simply Logging Off",
+    description: "Researchers confirm what we all suspected: most online debates are completely unnecessary.",
+    category: "Technology",
+    image: image3,
+    slug: "internet-arguments-study",
+    date: new Date(2024, 2, 12),
+  },
+  {
+    title: "Tech Giant Unveils Revolutionary AI Assistant That Can Understand Human Emotions",
+    description:
+      "The new AI system can detect subtle emotional cues in text and voice, potentially transforming customer service and mental health support.",
+    category: "Technology",
+    image: image4,
+    slug: "tech-giant-ai-emotions",
+    date: new Date(2024, 2, 9),
+  },
+  {
+    title: "Stock Markets Reach All-Time High Following Positive Economic Data",
+    description:
+      "Global markets surge as inflation cools and employment numbers exceed expectations, signaling economic recovery.",
+    category: "Business",
+    image: image2,
+    slug: "stock-markets-all-time-high",
+    date: new Date(2024, 2, 8),
+  },
+  {
+    title: "Local Man Can't Decide Which Streaming Service to Cancel This Month",
+    description: "With subscription costs rising, one man's monthly dilemma represents the struggle of a generation.",
+    category: "Entertainment",
+    image: image1,
+    slug: "streaming-service-dilemma",
+    date: new Date(2024, 2, 7),
+  },
+]
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <section className="container mx-auto px-4 py-8 md:px-6">
+          <div className="mb-12">
+            <ArticleCard
+              title={featuredArticle.title}
+              description={featuredArticle.description}
+              category={featuredArticle.category}
+              image={featuredArticle.image}
+              slug={featuredArticle.slug}
+              date={featuredArticle.date}
+              featured={true}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          </div>
+
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-serif text-2xl font-bold">Latest News</h2>
+            <Button variant="outline" asChild>
+              <Link href="/news">View All</Link>
+            </Button>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {recentArticles.map((article, index) => (
+              <ArticleCard
+                key={index}
+                title={article.title}
+                description={article.description}
+                category={article.category}
+                image={article.image}
+                slug={article.slug}
+                date={article.date}
+              />
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
-  );
+  )
 }
+
